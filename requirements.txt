@@ -1,0 +1,18 @@
+# Orchestration & LLM
+langgraph
+langchain-groq
+langchain-core
+
+# Embeddings & Vector DB
+langchain-huggingface
+sentence-transformers
+# Use psycopg binary (psycopg3) instead of compiling from source
+psycopg[binary]
+langchain-postgres
+sqlalchemy
+langchain-postgres
+
+# Tools & Parsing
+tavily-python
+pypdf
+python-dotenv
