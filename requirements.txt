@@ -11,6 +11,7 @@ psycopg[binary]
 langchain-postgres
 sqlalchemy
 langchain-postgres
+langchain-community
 
 # Tools & Parsing
 tavily-python
@@ -19,3 +20,8 @@ python-dotenv
 
 fastapi
 uvicorn
+
+python-multipart
+streamlit
+beautifulsoup4
+lxml

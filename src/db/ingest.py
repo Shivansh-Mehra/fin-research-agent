@@ -24,14 +24,20 @@ def ingest_documents(data_dir: str = "data"):
     for file_path in files:
         print(f"\nProcessing: {file_path}")
         
-        # Route to the correct loader based on extension
+# Route to the correct loader based on extension
         if file_path.lower().endswith(".pdf"):
             loader = PyPDFLoader(file_path)
+            documents = loader.load()
         else:
-            loader = BSHTMLLoader(file_path)
-            
-        documents = loader.load()
-        
+            try:
+                # Try standard UTF-8 encoding first
+                loader = BSHTMLLoader(file_path, open_encoding="utf-8")
+                documents = loader.load()
+            except Exception:
+                # If it hits a Microsoft smart quote (0x92), fall back to Windows-1252
+                loader = BSHTMLLoader(file_path, open_encoding="windows-1252")
+                documents = loader.load()
+                
         chunks = text_splitter.split_documents(documents)
         print(f"Generated {len(chunks)} chunks. Writing to PostgreSQL...")
         
