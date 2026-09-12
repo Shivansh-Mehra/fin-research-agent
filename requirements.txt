@@ -16,3 +16,6 @@ langchain-postgres
 tavily-python
 pypdf
 python-dotenv
+
+fastapi
+uvicorn
